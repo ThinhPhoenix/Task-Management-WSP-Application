@@ -1,0 +1,14 @@
+I:\C#\TaskManagement\TaskManagementRepo\bin\Debug\net8.0\TaskManagementRepo.deps.json
+I:\C#\TaskManagement\TaskManagementRepo\bin\Debug\net8.0\TaskManagementRepo.dll
+I:\C#\TaskManagement\TaskManagementRepo\bin\Debug\net8.0\TaskManagementRepo.pdb
+I:\C#\TaskManagement\TaskManagementRepo\obj\Debug\net8.0\TaskManagementRepo.GeneratedMSBuildEditorConfig.editorconfig
+I:\C#\TaskManagement\TaskManagementRepo\obj\Debug\net8.0\TaskManagementRepo.AssemblyInfoInputs.cache
+I:\C#\TaskManagement\TaskManagementRepo\obj\Debug\net8.0\TaskManagementRepo.AssemblyInfo.cs
+I:\C#\TaskManagement\TaskManagementRepo\obj\Debug\net8.0\TaskManagementRepo.csproj.CoreCompileInputs.cache
+I:\C#\TaskManagement\TaskManagementRepo\obj\Debug\net8.0\TaskManagementRepo.dll
+I:\C#\TaskManagement\TaskManagementRepo\obj\Debug\net8.0\refint\TaskManagementRepo.dll
+I:\C#\TaskManagement\TaskManagementRepo\obj\Debug\net8.0\TaskManagementRepo.pdb
+I:\C#\TaskManagement\TaskManagementRepo\obj\Debug\net8.0\ref\TaskManagementRepo.dll
+I:\C#\TaskManagement\TaskManagementRepo\bin\Debug\net8.0\TaskManagementRepo.runtimeconfig.json
+I:\C#\TaskManagement\TaskManagementRepo\obj\Debug\net8.0\TaskManagementRepo.csproj.AssemblyReference.cache
+I:\C#\TaskManagement\TaskManagementRepo\obj\Debug\net8.0\TaskManagementRepo.genruntimeconfig.cache
