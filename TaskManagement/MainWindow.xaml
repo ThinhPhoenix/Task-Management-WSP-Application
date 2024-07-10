@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Task Management Application" Height="450" Width="800">
     <Grid>
-        <TabControl>
+        <TabControl x:Name="TabControlG">
             <!-- Task List Tab -->
             <TabItem Header="Tasks">
                 <Grid>
@@ -17,12 +17,13 @@
                     </Grid.RowDefinitions>
 
                     <StackPanel Orientation="Horizontal" Margin="10">
-                        <Button Content="Add New Task" Width="100" Margin="0,0,10,0"/>
-                        <Button Content="Delete Task" Width="100"/>
+                        <Button Content="Delete Task" Width="100" Click="DeleteTask_Click" />
+                        <Button Content="Logout" Width="60" Margin="560,0,10,0" Click="Logout_Handler"/>
                     </StackPanel>
 
                     <DataGrid Grid.Row="1" AutoGenerateColumns="False" Name="TasksDataGrid">
                         <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="TaskID" Header="Task ID" Binding="{Binding TaskId}"/>
                             <DataGridTextColumn Header="Title" Binding="{Binding Title}"/>
                             <DataGridTextColumn Header="Due Date" Binding="{Binding DueDate}"/>
                             <DataGridTextColumn Header="Priority" Binding="{Binding Priority}"/>
@@ -50,31 +51,31 @@
                     </Grid.RowDefinitions>
 
                     <Label Content="Title:" Grid.Row="0" Grid.Column="0"/>
-                    <TextBox Grid.Row="0" Grid.Column="1" Margin="0,0,0,10"/>
+                    <TextBox x:Name="TitleTextBox" Grid.Row="0" Grid.Column="1" Margin="0,0,0,10"/>
 
                     <Label Content="Description:" Grid.Row="1" Grid.Column="0"/>
-                    <TextBox Grid.Row="1" Grid.Column="1" Margin="0,0,0,10" AcceptsReturn="True" TextWrapping="Wrap"/>
+                    <TextBox x:Name="DescriptionTextBox" Grid.Row="1" Grid.Column="1" Margin="0,0,0,10" AcceptsReturn="True" TextWrapping="Wrap"/>
 
                     <Label Content="Due Date:" Grid.Row="2" Grid.Column="0"/>
-                    <DatePicker Grid.Row="2" Grid.Column="1" Margin="0,0,0,10"/>
+                    <DatePicker x:Name="DueDatePicker" Grid.Row="2" Grid.Column="1" Margin="0,0,0,10"/>
 
                     <Label Content="Priority:" Grid.Row="3" Grid.Column="0"/>
-                    <ComboBox Grid.Row="3" Grid.Column="1" Margin="0,0,0,10">
+                    <ComboBox x:Name="PriorityComboBox" Grid.Row="3" Grid.Column="1" Margin="0,0,0,10">
                         <ComboBoxItem>Low</ComboBoxItem>
                         <ComboBoxItem>Medium</ComboBoxItem>
                         <ComboBoxItem>High</ComboBoxItem>
                     </ComboBox>
 
                     <Label Content="Status:" Grid.Row="4" Grid.Column="0"/>
-                    <ComboBox Grid.Row="4" Grid.Column="1" Margin="0,0,0,10">
+                    <ComboBox x:Name="StatusComboBox" Grid.Row="4" Grid.Column="1" Margin="0,0,0,10">
                         <ComboBoxItem>Pending</ComboBoxItem>
                         <ComboBoxItem>In Progress</ComboBoxItem>
                         <ComboBoxItem>Completed</ComboBoxItem>
                     </ComboBox>
 
                     <StackPanel Grid.Row="6" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                        <Button Content="Save" Width="75" Margin="0,0,10,0"/>
-                        <Button Content="Cancel" Width="75"/>
+                        <Button Content="Save" Width="75" Margin="0,0,10,0" Click="SaveTask_Click"/>
+                        <Button Content="Cancel" Width="75" Click="CancelTask_Click"/>
                     </StackPanel>
                 </Grid>
             </TabItem>

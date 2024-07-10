@@ -41,7 +41,9 @@ namespace TaskManagement
                     List<User> users = _context.Users.Where(a => a.Username == username.Text && a.Password == password.Text).ToList();
                     if (users.Count > 0)
                     {
-                        MainWindow mainWindow = new MainWindow();
+                        User user = users.First();
+                        List<TaskManagementRepo.Models.Task> tasks = _context.Tasks.Where(a => a.UserId == user.UserId).ToList();
+                        MainWindow mainWindow = new MainWindow(tasks, user);
                         mainWindow.Show();
                         this.Close();
                     }
