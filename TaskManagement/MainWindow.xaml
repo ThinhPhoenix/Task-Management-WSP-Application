@@ -17,8 +17,10 @@
                     </Grid.RowDefinitions>
 
                     <StackPanel Orientation="Horizontal" Margin="10">
-                        <Button Content="Delete Task" Width="100" Click="DeleteTask_Click" />
-                        <Button Content="Logout" Width="60" Margin="560,0,10,0" Click="Logout_Handler"/>
+                        <Button Content="Add Task" Width="100" Margin="0,0,10,0" Click="Add_Click" />
+                        <Button Content="Edit Task" Width="100" Click="Edit_Click" Margin="0,0,10,0"/>
+                        <Button Content="Delete Task" Width="100" Click="DeleteTask_Click" Margin="0,0,10,0" />
+                        <Button Content="Logout" Width="60" Margin="360,0,10,0" Click="Logout_Handler"/>
                     </StackPanel>
 
                     <DataGrid Grid.Row="1" AutoGenerateColumns="False" Name="TasksDataGrid">
@@ -34,7 +36,7 @@
             </TabItem>
 
             <!-- Add/Edit Task Tab -->
-            <TabItem Header="Add/Edit Task" Height="22" Margin="-2,-2,-2,0" VerticalAlignment="Top">
+            <TabItem Header="Add/Edit Task" Height="22" Margin="-2,-2,-2,0" VerticalAlignment="Top" Visibility="Hidden">
                 <Grid Margin="10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -77,6 +79,8 @@
                         <Button Content="Save" Width="75" Margin="0,0,10,0" Click="SaveTask_Click"/>
                         <Button Content="Cancel" Width="75" Click="CancelTask_Click"/>
                     </StackPanel>
+                    <TextBox x:Name="TaskIDTB" IsReadOnly="True" Grid.Row="5" Grid.Column="1" Margin="0,0,0,192" AcceptsReturn="True" TextWrapping="Wrap"/>
+                    <TextBox x:Name="isUpdate" Grid.Column="1" HorizontalAlignment="Left" Margin="0,38,0,0" Grid.Row="5" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                 </Grid>
             </TabItem>
         </TabControl>

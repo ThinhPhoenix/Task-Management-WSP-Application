@@ -11,11 +11,11 @@
       "RelativeMoniker": "D:0:0:{2133CCAA-4834-423C-9B5F-FD170E7A3C6B}|TaskManagement\\TaskManagement.csproj|solutionrelative:taskmanagement\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2133CCAA-4834-423C-9B5F-FD170E7A3C6B}|TaskManagement\\TaskManagement.csproj|i:\\c#\\taskmanagement\\taskmanagement\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2133CCAA-4834-423C-9B5F-FD170E7A3C6B}|TaskManagement\\TaskManagement.csproj|solutionrelative:taskmanagement\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Phrimp\\Documents\\Zalo Received Files\\SE182827_AirConditioner\\SE182827_AirConditioner\\Air\\CRUD\\MainWindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Phrimp\\Documents\\Zalo Received Files\\SE182827_AirConditioner\\SE182827_AirConditioner\\Air\\CRUD\\MainWindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2133CCAA-4834-423C-9B5F-FD170E7A3C6B}|TaskManagement\\TaskManagement.csproj|i:\\c#\\taskmanagement\\taskmanagement\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2133CCAA-4834-423C-9B5F-FD170E7A3C6B}|TaskManagement\\TaskManagement.csproj|solutionrelative:taskmanagement\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7B913ED8-A621-43C8-9BED-EBDDC87678EB}|TaskManagementRepo\\TaskManagementRepo.csproj|i:\\c#\\taskmanagement\\taskmanagementrepo\\models\\task.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -42,16 +42,15 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-10T07:46:49.111Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "C:\\Users\\Phrimp\\Documents\\Zalo Received Files\\SE182827_AirConditioner\\SE182827_AirConditioner\\Air\\CRUD\\MainWindow.xaml.cs",
               "ToolTip": "C:\\Users\\Phrimp\\Documents\\Zalo Received Files\\SE182827_AirConditioner\\SE182827_AirConditioner\\Air\\CRUD\\MainWindow.xaml.cs",
-              "ViewState": "AQIAADwAAAAAAAAAAAAAABcAAAAlAAAA",
+              "ViewState": "AQIAAGMAAACAZGZmZmYUwGIAAACHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-10T07:44:50.624Z",
               "EditorCaption": ""
@@ -76,14 +75,14 @@
               "RelativeDocumentMoniker": "TaskManagement\\MainWindow.xaml.cs",
               "ToolTip": "I:\\C#\\TaskManagement\\TaskManagement\\MainWindow.xaml.cs",
               "RelativeToolTip": "TaskManagement\\MainWindow.xaml.cs",
-              "ViewState": "AQIAAHAAAAAAAAAAAAAAAF8AAAAiAAAA",
+              "ViewState": "AQIAAJIAAABAAAAAAAAhwJcAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-10T07:35:54.55Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Login.xaml.cs",
               "DocumentMoniker": "I:\\C#\\TaskManagement\\TaskManagement\\Login.xaml.cs",
               "RelativeDocumentMoniker": "TaskManagement\\Login.xaml.cs",

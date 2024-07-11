@@ -69,54 +69,76 @@ namespace TaskManagement
             }
         }
 
-        private void SaveTask_Click(object sender, RoutedEventArgs e)
+        private String RandomString_Generator(int length)
         {
-            string title = TitleTextBox.Text;
-            string description = DescriptionTextBox.Text;
-            DateTime? dueDate = DueDatePicker.SelectedDate;
-            string priority = ((ComboBoxItem)PriorityComboBox.SelectedItem)?.Content.ToString();
-            string status = ((ComboBoxItem)StatusComboBox.SelectedItem)?.Content.ToString();
-
             Random random = new Random();
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            int length = 12;
-            string task_id = new string(Enumerable.Repeat(chars, length).Select(s => s[random.Next(s.Length)]).ToArray());
+            return new string(Enumerable.Repeat(chars, length).Select(s => s[random.Next(s.Length)]).ToArray());
+        }
 
-            if (string.IsNullOrWhiteSpace(title))
+        private void SaveTask_Click(object sender, RoutedEventArgs e)
+        {
+            try
             {
-                MessageBox.Show("Title is required.");
-                return;
+                string title = TitleTextBox.Text;
+                string description = DescriptionTextBox.Text;
+                DateTime? dueDate = DueDatePicker.SelectedDate;
+                string priority = ((ComboBoxItem)PriorityComboBox.SelectedItem)?.Content.ToString();
+                string status = ((ComboBoxItem)StatusComboBox.SelectedItem)?.Content.ToString();
+                string task_id = TaskIDTB.Text;
+                TaskManagementRepo.Models.Task selectedTask = (TaskManagementRepo.Models.Task)TasksDataGrid.SelectedItem == null ? new TaskManagementRepo.Models.Task() : (TaskManagementRepo.Models.Task)TasksDataGrid.SelectedItem;
+
+
+                if (string.IsNullOrWhiteSpace(title))
+                {
+                    MessageBox.Show("Title is required.");
+                    return;
+                }
+
+                TaskManagementRepo.Models.Task newTask = new TaskManagementRepo.Models.Task
+                {
+                    TaskId = task_id,
+                    Title = title,
+                    UserId = user.UserId,
+                    Description = description,
+                    DueDate = dueDate,
+                    Priority = (byte?)(priority == "Low" ? 1 : priority == "Medium" ? 2 : 3),
+                    Status = (byte?)(status == "Pending" ? 1 : status == "In Progress" ? 2 : 3)
+                };
+
+                var options = new DbContextOptionsBuilder<TaskManagementContext>()
+                  .EnableSensitiveDataLogging()
+                  .Options;
+                using (var _context = new TaskManagementContext(options))
+                {
+                    var taskExisted = _context.Tasks.Where(a => a.TaskId == selectedTask.TaskId).ToList();
+                    if (taskExisted.Count == 0)
+                    {
+                        _context.Add(newTask);
+                        _context.SaveChanges();
+                        Tasks.Add(newTask);
+                    }
+                    else
+                    {
+                        _context.Update(newTask);
+                        _context.SaveChanges();
+                    }
+                }
+
+                TitleTextBox.Clear();
+                DescriptionTextBox.Clear();
+                DueDatePicker.SelectedDate = null;
+                PriorityComboBox.SelectedIndex = -1;
+                StatusComboBox.SelectedIndex = -1;
+
+                LoadData();
+                TabControlG.SelectedIndex = 0;
             }
-
-            TaskManagementRepo.Models.Task newTask = new TaskManagementRepo.Models.Task
+            catch (Exception ex)
             {
-                TaskId = task_id,
-                Title = title,
-                Description = description,
-                DueDate = dueDate,
-                Priority = (byte?)(priority == "Low" ? 1 : priority == "Medium" ? 2 : 3),
-                Status = (byte?)(status == "Pending" ? 1 : status == "In Progress" ? 2 : 3)
-            };
-
-            Tasks.Add(newTask);
-
-            var options = new DbContextOptionsBuilder<TaskManagementContext>()
-              .EnableSensitiveDataLogging()
-              .Options;
-            using (var _context = new TaskManagementContext(options))
-            {
-                _context.Add(newTask);
-                _context.SaveChanges();
+                System.Windows.MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
-            TitleTextBox.Clear();
-            DescriptionTextBox.Clear();
-            DueDatePicker.SelectedDate = null;
-            PriorityComboBox.SelectedIndex = -1;
-            StatusComboBox.SelectedIndex = -1;
-
-            LoadData();
-            TabControlG.SelectedIndex = 0;
+            
         }
 
         private void CancelTask_Click(object sender, RoutedEventArgs e)
@@ -128,6 +150,29 @@ namespace TaskManagement
             StatusComboBox.SelectedIndex = -1;
 
             TabControlG.SelectedIndex = 0;
+        }
+
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+            TabControlG.SelectedIndex = 1;
+            TaskManagementRepo.Models.Task selectedTask = (TaskManagementRepo.Models.Task)TasksDataGrid.SelectedItem;
+            isUpdate.Text = "true";
+
+            TaskIDTB.Text = selectedTask.TaskId;
+            TitleTextBox.Text = selectedTask.Title;
+            DescriptionTextBox.Text = selectedTask.Description; 
+            DueDatePicker.SelectedDate = selectedTask.DueDate;
+            PriorityComboBox.SelectedIndex = (int)selectedTask.Priority - 1;
+            StatusComboBox.SelectedIndex = (int)selectedTask.Status - 1;
+
+        }
+
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+            TabControlG.SelectedIndex = 1;
+            
+            string taskid = RandomString_Generator(12);
+            TaskIDTB.Text = taskid;
         }
     }
 }
