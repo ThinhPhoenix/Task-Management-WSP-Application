@@ -61,6 +61,7 @@
 
                     <Label Content="Due Date:" Grid.Row="2" Grid.Column="0"/>
                     <DatePicker x:Name="DueDatePicker" Grid.Row="2" Grid.Column="1" Margin="0,0,0,10"/>
+                    <Label Content="Due Date:" Grid.Row="2" Grid.Column="0"/>
 
                     <Label Content="Priority:" Grid.Row="3" Grid.Column="0"/>
                     <ComboBox x:Name="PriorityComboBox" Grid.Row="3" Grid.Column="1" Margin="0,0,0,10">
@@ -80,8 +81,8 @@
                         <Button Content="Save" Width="75" Margin="0,0,10,0" Click="SaveTask_Click"/>
                         <Button Content="Cancel" Width="75" Click="CancelTask_Click"/>
                     </StackPanel>
-                    <TextBox x:Name="TaskIDTB" IsReadOnly="True" Grid.Row="5" Grid.Column="1" Margin="0,0,0,192" AcceptsReturn="True" TextWrapping="Wrap"/>
-                    <TextBox x:Name="isUpdate" Grid.Column="1" HorizontalAlignment="Left" Margin="0,38,0,0" Grid.Row="5" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="TaskIDTB" IsReadOnly="True" Grid.Row="5" Grid.Column="1" Margin="0,0,0,192" AcceptsReturn="True" TextWrapping="Wrap" Visibility="Hidden"/>
+                    <TextBox x:Name="isUpdate" Grid.Column="1" HorizontalAlignment="Left" Margin="0,38,0,0" Grid.Row="5" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
                 </Grid>
             </TabItem>
         </TabControl>

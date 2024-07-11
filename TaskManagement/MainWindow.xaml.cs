@@ -30,11 +30,29 @@ namespace TaskManagement
             TasksDataGrid.ItemsSource = tasks;
             this.user = user;
             DataContext = this;
+            DataProcess();
         }
 
         private void LoadData()
         {
             TasksDataGrid.ItemsSource = this.Tasks;
+        }
+
+        private void DataProcess()
+        {
+            var options = new DbContextOptionsBuilder<TaskManagementContext>()
+               .EnableSensitiveDataLogging()
+               .Options;
+            using (var _context = new TaskManagementContext(options))
+            {
+                List<TaskManagementRepo.Models.Task> tasks = _context.Tasks.Where(t => t.DueDate < DateTime.Now).ToList();
+                foreach (var task in tasks)
+                {
+                    task.Status = 4;
+                }
+                _context.UpdateRange(tasks);
+                _context.SaveChanges();
+            }
         }
 
         private void Logout_Handler(object sender, RoutedEventArgs e)
@@ -104,7 +122,9 @@ namespace TaskManagement
                     Description = description,
                     DueDate = dueDate,
                     Priority = (byte?)(priority == "Low" ? 1 : priority == "Medium" ? 2 : 3),
-                    Status = (byte?)(status == "Pending" ? 1 : status == "In Progress" ? 2 : 3)
+                    Status = (byte?)(status == "Pending" ? 1 : status == "In Progress" ? 2 : 3),
+                    CreatedAt = isUpdate.Text == "false" ? DateTime.Now : null,
+                    UpdatedAt = isUpdate.Text == "true" ? DateTime.Now : selectedTask.CreatedAt,
                 };
 
                 var options = new DbContextOptionsBuilder<TaskManagementContext>()
