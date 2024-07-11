@@ -20,7 +20,8 @@
                         <Button Content="Add Task" Width="100" Margin="0,0,10,0" Click="Add_Click" />
                         <Button Content="Edit Task" Width="100" Click="Edit_Click" Margin="0,0,10,0"/>
                         <Button Content="Delete Task" Width="100" Click="DeleteTask_Click" Margin="0,0,10,0" />
-                        <Button Content="Logout" Width="60" Margin="360,0,10,0" Click="Logout_Handler"/>
+                        <TextBox x:Name="SearchTextBox" TextWrapping="Wrap" Text="Search" Width="360" KeyDown="Search_Handler"/>
+                        <Button Content="Logout" Width="60" Margin="10,0,10,0" Click="Logout_Handler"/>
                     </StackPanel>
 
                     <DataGrid Grid.Row="1" AutoGenerateColumns="False" Name="TasksDataGrid">

@@ -86,6 +86,7 @@ namespace TaskManagement
                 string priority = ((ComboBoxItem)PriorityComboBox.SelectedItem)?.Content.ToString();
                 string status = ((ComboBoxItem)StatusComboBox.SelectedItem)?.Content.ToString();
                 string task_id = TaskIDTB.Text;
+
                 TaskManagementRepo.Models.Task selectedTask = (TaskManagementRepo.Models.Task)TasksDataGrid.SelectedItem == null ? new TaskManagementRepo.Models.Task() : (TaskManagementRepo.Models.Task)TasksDataGrid.SelectedItem;
 
 
@@ -111,8 +112,8 @@ namespace TaskManagement
                   .Options;
                 using (var _context = new TaskManagementContext(options))
                 {
-                    var taskExisted = _context.Tasks.Where(a => a.TaskId == selectedTask.TaskId).ToList();
-                    if (taskExisted.Count == 0)
+
+                    if (isUpdate.Text == "false")
                     {
                         _context.Add(newTask);
                         _context.SaveChanges();
@@ -120,7 +121,7 @@ namespace TaskManagement
                     }
                     else
                     {
-                        _context.Update(newTask);
+                        _context.Tasks.Update(newTask);
                         _context.SaveChanges();
                     }
                 }
@@ -131,8 +132,8 @@ namespace TaskManagement
                 PriorityComboBox.SelectedIndex = -1;
                 StatusComboBox.SelectedIndex = -1;
 
-                LoadData();
                 TabControlG.SelectedIndex = 0;
+                LoadData();
             }
             catch (Exception ex)
             {
@@ -170,9 +171,27 @@ namespace TaskManagement
         private void Add_Click(object sender, RoutedEventArgs e)
         {
             TabControlG.SelectedIndex = 1;
+            isUpdate.Text = "false";
             
             string taskid = RandomString_Generator(12);
             TaskIDTB.Text = taskid;
+        }
+
+        private void Search_Handler(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                var options = new DbContextOptionsBuilder<TaskManagementContext>()
+                  .EnableSensitiveDataLogging()
+                  .Options;
+                List<TaskManagementRepo.Models.Task> tasks = new List<TaskManagementRepo.Models.Task>();
+                using (var _context = new TaskManagementContext(options))
+                {
+                    tasks = _context.Tasks.Where(t => t.Title.Contains(SearchTextBox.Text)).ToList();
+                    Tasks = new ObservableCollection<TaskManagementRepo.Models.Task>(tasks);
+                }
+                LoadData();
+            }
         }
     }
 }
