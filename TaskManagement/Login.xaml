@@ -5,18 +5,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TaskManagement"
         mc:Ignorable="d"
-        Title="Login" Height="192" Width="300">
+        Title="Login" d:DesignHeight="412.96" d:DesignWidth="609">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="17*"/>
-            <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <Label Content="Login" FontSize="25" HorizontalAlignment="Left" Margin="114,0,0,0" Grid.ColumnSpan="2"></Label>
-        <Label Content="Username :" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Center" FontSize="15" RenderTransformOrigin="0.525,0.282"/>
-        <Label Content="Password :" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" FontSize="15"/>
-        <TextBox x:Name="username" HorizontalAlignment="Left" Margin="92,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="198" RenderTransformOrigin="0.597,-0.031" Height="30" Grid.ColumnSpan="3"/>
-        <TextBox x:Name="password" HorizontalAlignment="Left" Margin="92,106,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="198" RenderTransformOrigin="0.597,-0.031" Height="30" FontFamily="ms-appx:///Assets/PassDot.ttf#PassDot" Grid.ColumnSpan="3"/>
-        <Button Content="Enter" HorizontalAlignment="Left" Margin="16,141,0,0" VerticalAlignment="Top" Height="30" Width="104" Click="Login_Handler" Grid.ColumnSpan="2" Grid.Column="1"/>
+
+        <Label x:Name="Label" Content="LOGIN" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="48"/>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="300">
+            <Label Content="Username :" FontSize="15"/>
+            <TextBox x:Name="username" Width="300" Height="30"/>
+            <Label Content="Password :" FontSize="15" Margin="0,20,0,0"/>
+            <TextBox x:Name="password" Width="300" Height="30" FontFamily="ms-appx:///Assets/PassDot.ttf#PassDot"/>
+            <Button Content="Login" Width="175" Height="30" Margin="0,20,0,0" Click="Login_Handler">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform X="0"/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF6291A5" Offset="0.003"/>
+                        <GradientStop Color="#FF00ACF5" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+        </StackPanel>
     </Grid>
 </Window>

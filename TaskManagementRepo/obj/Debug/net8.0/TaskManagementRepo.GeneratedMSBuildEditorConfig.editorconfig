@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = TaskManagementRepo
-build_property.ProjectDir = I:\C#\TaskManagement\TaskManagementRepo\
+build_property.ProjectDir = C:\Users\LaiChiThinh\Desktop\Task-Management-WSP-Application\TaskManagementRepo\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

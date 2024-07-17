@@ -28,7 +28,6 @@ namespace TaskManagement
         {
             InitializeComponent();
         }
-
         private void Login_Handler(object sender, RoutedEventArgs e)
         {
             try
