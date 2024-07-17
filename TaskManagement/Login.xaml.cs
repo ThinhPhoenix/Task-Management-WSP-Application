@@ -21,36 +21,47 @@ namespace TaskManagement
     /// </summary>
     public partial class Login : Window
     {
-
         private TaskManagementContext _context;
 
         public Login()
         {
             InitializeComponent();
         }
+
         private void Login_Handler(object sender, RoutedEventArgs e)
         {
             try
             {
                 var options = new DbContextOptionsBuilder<TaskManagementContext>()
-               .EnableSensitiveDataLogging()
-               .Options;
+                    .EnableSensitiveDataLogging()
+                    .Options;
                 using (var _context = new TaskManagementContext(options))
                 {
-                    List<User> users = _context.Users.Where(a => a.Username == username.Text && a.Password == password.Text).ToList();
+                    List<User> users = _context.Users
+                        .Where(a => a.Username == username.Text && a.Password == password.Password)
+                        .ToList();
+
                     if (users.Count > 0)
                     {
                         User user = users.First();
-                        List<TaskManagementRepo.Models.Task> tasks = _context.Tasks.Where(a => a.UserId == user.UserId).ToList();
+                        List<TaskManagementRepo.Models.Task> tasks = _context.Tasks
+                            .Where(a => a.UserId == user.UserId)
+                            .ToList();
+
                         MainWindow mainWindow = new MainWindow(tasks, user);
                         mainWindow.Show();
                         this.Close();
                     }
+                    else
+                    {
+                        MessageBox.Show("Incorrect username or password");
+                    }
                 }
             }
-            catch { MessageBox.Show("Incorrect username or password"); }
-           
-            
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred: " + ex.Message);
+            }
         }
     }
 }
